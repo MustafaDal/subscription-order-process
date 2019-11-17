@@ -4,13 +4,10 @@ import Input from './Fields/Input'
 import * as Yup from 'yup'
 
 const validationSchema = Yup.object().shape({
-  lastName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(70, 'Too Long!')
-    .required('Required'),
-  email: Yup.string()
-    .email('Invalid email')
-    .required('Required')
+  lastName: Yup.string().required('Required'),
+  firstName: Yup.string().required('Required'),
+  eMail: Yup.string().required('Required'),
+  streetAddress: Yup.string().required('Required')
 })
 
 const UserData = () => {
