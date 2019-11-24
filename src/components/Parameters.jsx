@@ -86,4 +86,4 @@ const Parameters = props => {
   )
 }
 
-export default React.memo(Parameters)
+export default Parameters

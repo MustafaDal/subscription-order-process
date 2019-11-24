@@ -37,4 +37,4 @@ const UserData = props => {
   )
 }
 
-export default React.memo(UserData)
+export default UserData

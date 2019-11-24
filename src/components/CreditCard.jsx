@@ -34,4 +34,4 @@ const CreditCard = props => {
   )
 }
 
-export default React.memo(CreditCard)
+export default CreditCard
