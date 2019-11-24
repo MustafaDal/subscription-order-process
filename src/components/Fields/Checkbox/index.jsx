@@ -4,9 +4,9 @@ import classNames from 'classnames'
 import Label from '../Common/Label'
 import ValidationError from '../Common/ValidationError'
 
-const LeanCheckbox = ({ children, label, inline, ...props }) => {
+const LeanCheckbox = ({ children, label, inline, className, ...props }) => {
   return (
-    <div className={classNames('form-check', { 'form-check-inline': inline })}>
+    <div className={classNames('form-check', { 'form-check-inline': inline }, className)}>
       <input className="form-check-input" type="checkbox" {...props} />
       <Label className="form-check-label" htmlFor={props.id}>
         {label}

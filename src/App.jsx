@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from 'react'
 import { costCalculator } from './utils'
 
 import ComponentByStep from './components/ComponentByStep'
+import { Checkbox } from './components/Fields/Checkbox'
 import useStepper from './hooks/Stepper'
 
 const App = () => {
@@ -27,7 +28,14 @@ const App = () => {
   return (
     <div className="container">
       <div className="card mx-auto my-3 card-subscription">
-        <div className="card-header">Subscription order process</div>
+        <div className="card-header d-flex">
+          Subscription order process
+
+          <Checkbox inline checked={state.currentStep > 0} className="ml-auto" />
+          <Checkbox inline checked={state.currentStep > 1} />
+          <Checkbox inline checked={state.currentStep > 2} />
+          <Checkbox inline checked={state.currentStep > 3} className="mr-0" />
+        </div>
         <div className="card-body">
           {state.currentStep > 0 && (
             <h5 className="text-right">

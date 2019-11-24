@@ -1,6 +1,7 @@
 import { useCallback, useReducer } from 'react'
 
 const initialState = {
+  limit: 3,
   currentStep: 0,
   values: []
 }
@@ -8,7 +9,7 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'next':
-      if (state.currentStep === 3) return state
+      if (state.currentStep === state.limit) return state
       return { ...state, currentStep: state.currentStep + 1 }
     case 'prev':
       if (state.currentStep === 0) return state
