@@ -19,10 +19,10 @@ const FormikCheckbox = props => {
   const [field] = useField({ type: 'checkbox', ...props })
 
   return (
-    <Fragment>
+    <div className="form-group">
       <LeanCheckbox {...field} {...props} />
       <ValidationError name={props.name} />
-    </Fragment>
+    </div>
   )
 }
 
