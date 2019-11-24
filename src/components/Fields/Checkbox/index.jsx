@@ -4,10 +4,10 @@ import classNames from 'classnames'
 import Label from '../Common/Label'
 import ValidationError from '../Common/ValidationError'
 
-const LeanRadioGroup = ({ children, label, inline, ...props }) => {
+const LeanCheckbox = ({ children, label, inline, ...props }) => {
   return (
     <div className={classNames('form-check', { 'form-check-inline': inline })}>
-      <input className="form-check-input" type="radio" {...props} />
+      <input className="form-check-input" type="checkbox" {...props} />
       <Label className="form-check-label" htmlFor={props.id}>
         {label}
       </Label>
@@ -15,16 +15,16 @@ const LeanRadioGroup = ({ children, label, inline, ...props }) => {
   )
 }
 
-const FormikRadioGroup = props => {
-  const [field] = useField({ type: 'radio', ...props })
+const FormikCheckbox = props => {
+  const [field] = useField({ type: 'checkbox', ...props })
 
   return (
     <Fragment>
-      <LeanRadioGroup {...field} {...props} />
+      <LeanCheckbox {...field} {...props} />
       <ValidationError name={props.name} />
     </Fragment>
   )
 }
 
-export const RadioGroup = LeanRadioGroup
-export default FormikRadioGroup
+export const Checkbox = LeanCheckbox
+export default FormikCheckbox

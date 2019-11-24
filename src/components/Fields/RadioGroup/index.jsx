@@ -7,7 +7,7 @@ import ValidationError from '../Common/ValidationError'
 const LeanCheckbox = ({ children, label, inline, ...props }) => {
   return (
     <div className={classNames('form-check', { 'form-check-inline': inline })}>
-      <input className="form-check-input" type="checkbox" {...props} />
+      <input className="form-check-input" type="radio" {...props} />
       <Label className="form-check-label" htmlFor={props.id}>
         {label}
       </Label>
@@ -16,7 +16,7 @@ const LeanCheckbox = ({ children, label, inline, ...props }) => {
 }
 
 const FormikCheckbox = props => {
-  const [field] = useField({ type: 'checkbox', ...props })
+  const [field] = useField({ type: 'radio', ...props })
 
   return (
     <Fragment>
