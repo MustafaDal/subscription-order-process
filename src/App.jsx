@@ -1,10 +1,16 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
+import { costCalculator } from './utils'
 
 import ComponentByStep from './components/ComponentByStep'
 import useStepper from './hooks/Stepper'
 
 const App = () => {
   const { state, prev: goPrev, next: goNext, setValue } = useStepper()
+
+  const { duration, amountOfGigabytes, upfrontPayment } = state.values[0] || {}
+  const price = useMemo(() => {
+    return costCalculator({ duration, amountOfGigabytes, upfrontPayment })
+  }, [duration, amountOfGigabytes, upfrontPayment])
 
   const handleSubmit = useCallback(
     (values, actions) => {
@@ -23,6 +29,15 @@ const App = () => {
       <div className="card mx-auto my-3 card-subscription">
         <div className="card-header">Subscription order process</div>
         <div className="card-body">
+          {state.currentStep > 0 && (
+            <h5 className="text-right">
+              Price:
+              <span className="badge badge-pill badge-warning ml-2">
+                {price}
+              </span>
+            </h5>
+          )}
+
           <ComponentByStep
             step={state.currentStep}
             initialValues={state.values[state.currentStep]}
