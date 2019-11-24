@@ -10,27 +10,31 @@ const validationSchema = Yup.object().shape({
   streetAddress: Yup.string().required('Required')
 })
 
-const UserData = () => {
+const UserData = props => {
+  const { children, initialValues, ...formikProps } = props
+
   return (
     <Formik
       initialValues={{
         lastName: '',
         firstName: '',
         eMail: '',
-        streetAddress: ''
+        streetAddress: '',
+        ...initialValues
       }}
       validationSchema={validationSchema}
+      {...formikProps}
     >
-      <Form className="row">
-        <div className="col-sm-6">
-          <Input name="lastName" label="Last name" />
-          <Input name="firstName" label="First name" />
-          <Input name="eMail" label="Email" />
-          <Input name="streetAddress" label="Street Address" />
-        </div>
+      <Form>
+        <Input name="lastName" label="Last name" />
+        <Input name="firstName" label="First name" />
+        <Input name="eMail" label="Email" />
+        <Input name="streetAddress" label="Street Address" />
+
+        {children}
       </Form>
     </Formik>
   )
 }
 
-export default UserData
+export default React.memo(UserData)

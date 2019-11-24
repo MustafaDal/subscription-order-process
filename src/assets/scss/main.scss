@@ -1,0 +1,9 @@
+body {
+  background: #ededed;
+}
+
+.card-subscription {
+  @media (min-width: 992px) {
+    max-width: 50%;
+  }
+}
